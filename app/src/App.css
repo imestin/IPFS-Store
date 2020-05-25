@@ -45,4 +45,54 @@ footer {
   top: 50px;
   position: fixed; }
 
+.board {
+  display: flex;
+  flex-wrap: wrap; }
+
+.thumbnail {
+  display: flex;
+  flex-wrap: wrap;
+  width: 22vh;
+  height: 28vh;
+  margin: 3vh;
+  border-radius: 5px;
+  background-color: #285467; }
+  .thumbnail .thumbnailImage {
+    width: 100%;
+    max-width: 18vh;
+    max-height: 18vh;
+    min-height: 18vh;
+    min-width: 18vh;
+    margin: 2vh; }
+  .thumbnail .thumnailLabel {
+    width: 100%;
+    text-align: center; }
+
+.itemDescription {
+  display: flex;
+  flex-wrap: nowrap;
+  margin: 10vh;
+  width: 90vw;
+  border-radius: 5px;
+  background-color: #285467; }
+  .itemDescription .itemDescriptionCol0 .fullpageImage {
+    max-width: 40vw;
+    max-height: 40vw;
+    min-height: 40vw;
+    min-width: 40vw;
+    margin: 2vw;
+    border-radius: 5px; }
+  .itemDescription .itemDescriptionCol1 {
+    display: flex;
+    flex-wrap: wrap;
+    width: 60%; }
+    .itemDescription .itemDescriptionCol1 .fullpageName {
+      width: 100%; }
+    .itemDescription .itemDescriptionCol1 .fullpageDesc {
+      width: 100%; }
+    .itemDescription .itemDescriptionCol1 .fullpagePrice {
+      flex-basis: 20vw; }
+    .itemDescription .itemDescriptionCol1 .fullpageQuant {
+      flex-basis: 20vw; }
+
 /*# sourceMappingURL=App.css.map */

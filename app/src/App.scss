@@ -5,6 +5,7 @@ $frame-color: #111111;
 $main-bg: #282c34;
 $main-font-color: #FFFFFF;
 $link-color: #61dafb;
+$thumbnail-bg: #285467;
 
 
 .App {
@@ -63,4 +64,79 @@ footer {
     background-color: $main-bg;
     top: 50px;
     position: fixed;
+}
+
+//Contains thumbnails
+.board {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.thumbnail {
+    display: flex;
+    flex-wrap: wrap;
+    width: 22vh;
+    height: 28vh;
+    margin: 3vh;
+    border-radius: 5px;
+    background-color: $thumbnail-bg;
+    
+    .thumbnailImage {
+        width: 100%;
+        max-width: 18vh;
+        max-height: 18vh;
+        min-height: 18vh;
+        min-width: 18vh;
+        margin: 2vh;
+    }
+    
+    .thumnailLabel {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+//Item description panel, when showed on full page
+.itemDescription {
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 10vh;
+    width: 90vw;
+    border-radius: 5px;
+    background-color: $thumbnail-bg;
+    
+    .itemDescriptionCol0 {
+        .fullpageImage {
+            //This does not need flex
+            max-width: 40vw;
+            max-height: 40vw;
+            min-height: 40vw;
+            min-width: 40vw;
+            margin: 2vw;
+            border-radius: 5px;
+        }
+    }
+
+    .itemDescriptionCol1 {
+        display: flex;
+        flex-wrap: wrap;
+        width: 60%;
+        .fullpageName {
+            width: 100%;
+        }
+    
+        .fullpageDesc {
+            width: 100%;
+        }
+    
+        .fullpagePrice {
+            flex-basis: 20vw;
+        }
+    
+        .fullpageQuant {
+            flex-basis: 20vw;
+        }
+    }
+
+
 }
