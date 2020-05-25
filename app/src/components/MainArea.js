@@ -27,7 +27,7 @@ class MainArea extends React.Component {
             case "item": {
                 return(
                     <div id="mainArea" className="mainArea">
-                        <Item item={this.props.listItems[this.props.currentItem]} />
+                        <Item item={this.props.listItems[this.props.currentItem]} buyItem={this.props.buyItem} />
                     </div>
                 );
             }
@@ -35,8 +35,15 @@ class MainArea extends React.Component {
                 return(
                     <div id="mainArea" className="mainArea">
                         <h1>About us</h1>
-                        <p>There is nothing to say really.</p>
-                        <p>We don't know yet what we are doing.</p>
+                        <p>Concept is still under development.</p>
+                    </div>
+                );
+            }
+            case "buy": {
+                return(
+                    <div id="mainArea" className="mainArea">
+                        <h1>Buy button was clicked.</h1>
+                        <p>This function is not implemented yet.</p>
                     </div>
                 );
             }

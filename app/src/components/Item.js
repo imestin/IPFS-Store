@@ -12,6 +12,7 @@ class Item extends React.Component {
                     <p id="itemDesc" className="fullpageDesc">{this.props.item.desc}</p>
                     <label id="itemPrice" className="fullpagePrice">Price: {this.props.item.price} SG</label>
                     <label id="itemQuantity" className="fullpageQuant">Quantity left: {this.props.item.quantity}</label>
+                    <button id="buy" className="buyButton" onClick={() => this.props.buyItem(this.props.item.id)} >BUY</button>
                 </div>
             </div>
         );

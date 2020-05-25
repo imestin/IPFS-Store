@@ -13,10 +13,12 @@ class App extends React.Component {
     super(props);
     this.itemClicked = this.itemClicked.bind(this);
     this.navButtons = this.navButtons.bind(this);
+    this.buyItem = this.buyItem.bind(this);
     this.state = {
       note: "It would be good to use Redux",
       //For testing only
       /** Products for sale. Fetched from blockchain structure:
+       * id: unique id
        * item_name: Name of the item
        * desc: Description
        * price: Price
@@ -24,7 +26,7 @@ class App extends React.Component {
        */
       listItems: 
       [
-        {item_name: "Sprite", desc: "It's a Sprite", price: "2", quantity: "50"}, {item_name: "Cola", desc: "It's a Cola", price: "2.5", quantity: "60"}
+        {id: "0", item_name: "Sprite", desc: "It's a Sprite", price: "2", quantity: "50"}, {id: "1", item_name: "Cola", desc: "It's a Cola", price: "2.5", quantity: "60"}
       ],
       currentItem: null,
       currentDisplay: "board",        // board | item | about
@@ -66,6 +68,13 @@ class App extends React.Component {
     }
   }
 
+  buyItem(id) {
+    console.log("This is the id of the selected item: ", id);
+    this.setState({
+      currentDisplay: "buy",
+    });
+  }
+
   render() {
       return (
       <div className="App">
@@ -86,6 +95,7 @@ class App extends React.Component {
           itemClicked={this.itemClicked} 
           currentDisplay={this.state.currentDisplay}
           currentItem={this.state.currentItem}
+          buyItem={this.buyItem}
         />
 
         <footer>

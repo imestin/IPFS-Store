@@ -6,7 +6,10 @@ $main-bg: #282c34;
 $main-font-color: #FFFFFF;
 $link-color: #61dafb;
 $thumbnail-bg: #285467;
-
+$button-color: #DD0000;
+$button-text: #dddddd;
+$button-color-hover: #AA0000;
+$button-text-hover: #FFFF00;
 
 .App {
     text-align: center;
@@ -14,16 +17,7 @@ $thumbnail-bg: #285467;
   
   
   
-.App-header {
-    background-color: $main-bg;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: $main-font-color;
-}
+
   
 .App-link {
     color: $link-color;
@@ -36,15 +30,30 @@ nav {
     position: fixed;
     width: 100%;
     top: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 1;
     ul {
         list-style-type: none;
         margin: 0;
-        padding: 10px;
+        padding: 0;
         display: flex;
         li {
-            padding-left: 20px;
-            a {
+            button {
                 text-decoration: none;
+                margin: 0;
+                padding: 18px 32px;
+                border: none;
+                background-color: $button-color;
+                color: $button-text;
+            }
+            button:hover {
+                text-decoration: none;
+                margin: 0;
+                padding: 18px 32px;
+                border: none;
+                background-color: $button-color-hover;
+                color: $button-text-hover;
             }
         }
     }
@@ -53,17 +62,21 @@ nav {
 footer {
     background-color: $frame-color;
     color: $main-font-color;
+    //Temporary solution
     height: 80px;
     position: fixed;
     width: 100%;
     bottom: 0;
-    
 }
 
 .mainArea {
+    height: 120%;
+    width: 100%;
     background-color: $main-bg;
     top: 50px;
-    position: fixed;
+    position: absolute;
+    overflow: hidden;
+    
 }
 
 //Contains thumbnails

@@ -2,16 +2,6 @@
 .App {
   text-align: center; }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: #FFFFFF; }
-
 .App-link {
   color: #61dafb; }
 
@@ -21,16 +11,29 @@ nav {
   height: 50px;
   position: fixed;
   width: 100%;
-  top: 0; }
+  top: 0;
+  margin: 0;
+  padding: 0;
+  z-index: 1; }
   nav ul {
     list-style-type: none;
     margin: 0;
-    padding: 10px;
+    padding: 0;
     display: flex; }
-    nav ul li {
-      padding-left: 20px; }
-      nav ul li a {
-        text-decoration: none; }
+    nav ul li button {
+      text-decoration: none;
+      margin: 0;
+      padding: 18px 32px;
+      border: none;
+      background-color: #DD0000;
+      color: #dddddd; }
+    nav ul li button:hover {
+      text-decoration: none;
+      margin: 0;
+      padding: 18px 32px;
+      border: none;
+      background-color: #AA0000;
+      color: #FFFF00; }
 
 footer {
   background-color: #111111;
@@ -41,9 +44,12 @@ footer {
   bottom: 0; }
 
 .mainArea {
+  height: 120%;
+  width: 100%;
   background-color: #282c34;
   top: 50px;
-  position: fixed; }
+  position: absolute;
+  overflow: hidden; }
 
 .board {
   display: flex;
