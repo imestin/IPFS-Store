@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {itemClicked, buy, nav} from './actions';
+import {itemClicked, buy, nav, fetchData} from './actions';
 import './App.css';
 import MainArea from './components/MainArea'
 
@@ -14,18 +14,13 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.itemClicked = this.itemClicked.bind(this);
-    this.navButtons = this.navButtons.bind(this);
     this.buyItem = this.buyItem.bind(this);
     //State was deleted from here
   }
 
   componentDidMount() {
-    //fetch should be here, but with redux it will be probably slightly different
-    /*fetch('./MOCK_DATA.json')
-      .then(res => res.json())
-      .then(json => this.setState( {listItems: json} ))
-      .catch(msg => console.error(msg));
-*/  
+
+    this.props.dispatch(fetchData());
     console.log("componentDidMount\nNothing is happening here at the moment.");
 
     // !! It was a problem that test-data was put to componentDidMount, it behaved like this.props.data does not exist when calling this.props.data[0]
@@ -39,40 +34,9 @@ class App extends React.Component {
     this.props.dispatch(itemClicked(i));
     this.props.dispatch(nav("item"));
 
-    //Maybe it is reseting to initial state. But that also does not make any sense, because display is working.
-    // not true ... from About to Shop, similar error. 
-    //listItems is undefined
-    //state elements are switching to undefined
-    // !!! About is working, so it's not true that it's absolutly not working. Why is it working?
-    // nav() action is absolutly working... or partly, at least.
-    //TypeError: this.props.listItems is undefined
-    //I can't believe that this is an asynchronoucity problem.
-    //That variable shouldn't change. It already worked.
     console.log("currentItem: ", this.props.currentItem);
   }
 
-
-  //Totally unnecesarry function
-  navButtons(pressedButton) {
-
-
-    //this.props.dispatch(nav(pressedButton));
-
-    //This whole stuff code go inside <li><button> indeed</button>
-/*
-    if (pressedButton === "shop") {
-      this.setState({
-        currentDisplay: "board",
-        test: "random",
-      });
-    }
-    if (pressedButton === "about") {
-      this.setState({
-        currentDisplay: "about",
-      })
-    }
-    */
-  }
 
   //This we will also delete later
   buyItem(id) {

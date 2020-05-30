@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 import * as serviceWorker from './serviceWorker';
 
 const initialState = {
@@ -23,6 +24,8 @@ const initialState = {
   ],
   currentItem: null,
   currentDisplay: "board",        // board | item | about
+  loading: false,                 //Fetching data will set this to true
+  error: null,                    //Fetch data error
 }
 
 function reducer(state = initialState, action) {
@@ -45,12 +48,35 @@ function reducer(state = initialState, action) {
         ...state,
         buy: "Not specified",
       };
+    case "FETCH_DATA_BEGIN":
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case "FETCH_DATA_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        listItems: action.payload.products,
+      };
+    case "FETCH_DATA_FAILURE":
+      return {
+        ...state,
+        loading: false,
+        error: action.payload.error,
+        listItems: [],
+      };
     default:
       return state;
   }
 }
 
-const store = createStore(reducer);
+//applyMiddleware is necesarry for fetching data, in actions.js
+const store = createStore(
+  reducer,
+  applyMiddleware(thunk)
+);
 
 
 ReactDOM.render(
