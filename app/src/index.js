@@ -32,14 +32,17 @@ function reducer(state = initialState, action) {
   switch (action.type) {
     case "NAV":
       return {
+        ...state,
         currentDisplay: action.display,
       };
     case "ITEM_CLICKED": 
       return {
+        ...state,
         currentItem: action.item,
       };
     case "BUY":
       return {
+        ...state,
         buy: "Not specified",
       };
     default:
