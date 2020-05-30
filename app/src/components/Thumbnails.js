@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import {itemClicked, buy, nav} from '../actions';
 
 class Thumbnails extends React.Component {
     render() {
@@ -24,4 +26,12 @@ class Thumbnails extends React.Component {
     }
 }
 
-export default Thumbnails;
+function mapStateToProps(state) {
+    return {
+      listItems: state.listItems,
+      currentItem: state.currentItem,
+      currentDisplay: state.currentDisplay,
+    }
+  }
+  
+export default connect(mapStateToProps)(Thumbnails);

@@ -1,22 +1,36 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import {itemClicked, buy, nav} from '../actions';
 
 class Item extends React.Component {
+    
     render() {
+        //This very same sentence from Thumbnails, is working. From here, not working. Obviously something is not connected properly.
+        
+        let selectedItem = this.props.listItems[this.props.currentItem];
+
         return(
             <div id="itemDescription" className="itemDescription">
                 <div id="imageColumn" className="itemDescriptionCol0">
-                    <img src={require("../default.jpg")} className="fullpageImage" alt={this.props.item.name}></img>
+                    <img src={require("../default.jpg")} className="fullpageImage" alt={selectedItem.name}></img>
                 </div>
                 <div id="descColumn"  className="itemDescriptionCol1">
-                    <h1 id="itemName" className="fullpageName">{this.props.item.item_name}</h1>
-                    <p id="itemDesc" className="fullpageDesc">{this.props.item.desc}</p>
-                    <label id="itemPrice" className="fullpagePrice">Price: {this.props.item.price} SG</label>
-                    <label id="itemQuantity" className="fullpageQuant">Quantity left: {this.props.item.quantity}</label>
-                    <button id="buy" className="buyButton" onClick={() => this.props.buyItem(this.props.item.id)} >BUY</button>
+                    <h1 id="itemName" className="fullpageName">{selectedItem.item_name}</h1>
+                    <p id="itemDesc" className="fullpageDesc">{selectedItem.desc}</p>
+                    <label id="itemPrice" className="fullpagePrice">Price: {selectedItem.price} SG</label>
+                    <label id="itemQuantity" className="fullpageQuant">Quantity left: {selectedItem.quantity}</label>
+                    <button id="buy" className="buyButton" onClick={() => this.props.buyItem(selectedItem.id)} >BUY</button>
                 </div>
             </div>
         );
     }
 }
 
-export default Item;
+function mapStateToProps(state) {
+    return {
+      listItems: state.listItems,
+      currentItem: state.currentItem,
+    }
+  }
+
+export default connect(mapStateToProps)(Item);

@@ -1,5 +1,6 @@
 import React from 'react';
 import Thumbnails from './Thumbnails';
+import { connect } from 'react-redux';
 import Item from './Item';
 
 class MainArea extends React.Component {
@@ -17,7 +18,6 @@ class MainArea extends React.Component {
                         
                         {/* 1 item test */}
                         <Thumbnails 
-                            listItems={this.props.listItems} 
                             itemClicked={this.props.itemClicked}
                         />
         
@@ -27,7 +27,7 @@ class MainArea extends React.Component {
             case "item": {
                 return(
                     <div id="mainArea" className="mainArea">
-                        <Item item={this.props.listItems[this.props.currentItem]} buyItem={this.props.buyItem} />
+                        <Item buyItem={this.props.buyItem} />
                     </div>
                 );
             }
@@ -60,6 +60,14 @@ class MainArea extends React.Component {
     }
 }
 
-export default MainArea;
+function mapStateToProps(state) {
+    return {
+      listItems: state.listItems,
+      currentItem: state.currentItem,
+      currentDisplay: state.currentDisplay,
+    }
+  }
+
+export default connect(mapStateToProps)(MainArea);
 
 //Module not found: Can't resolve './default.jpg' in '/home/user/IPFS-Store/app/src/components' so it is searching in the same folder as where is the file.
