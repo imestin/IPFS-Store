@@ -1,3 +1,6 @@
+//The data is on another IPFS peerId (another IPNS link)
+let dataToFetch = 'https://ipfs.io/ipns/QmPPF1MM6NbzdZwHoPNy6nhSRcow7m744a5SUPxdpudL53';
+
 export function nav(pressedButton) {
     return {
         type: "NAV",
@@ -22,7 +25,7 @@ export function buy(id) {
 export function fetchData() {
     return dispatch => {
         dispatch(fetchDataBegin());
-        return fetch('./MOCK_DATA.json')
+        return fetch(dataToFetch)
         .then(res => res.json())
         .then(json => {
             //or json.something
